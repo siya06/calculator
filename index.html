@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+  	<script>
+
+      function checkIfEnterKeyIsPressed(that) {
+        if (that.keyCode == 13)
+          solve()
+      }
+
+  		function addValue(value)
+  		{
+  			document.getElementById("result").value += value
+  		}
+
+  		function solve()
+  		{
+  			input = document.getElementById("result").value
+  			output = eval(input)
+  			document.getElementById("result").value = output
+  		}
+
+  		function clearValue()
+  		{
+  			document.getElementById("result").value = ""
+  		}
+  	</script>
+
+  	<style>
+
+    #button, #buttonClear, #result{
+      width: 100%;
+      border-width: 0px;
+      font-family: 'Roboto';
+    }
+
+    #button{
+      background-color: lightblue;
+      color: darkslategrey;
+      transition: 1s;
+    }
+
+    #button:hover{
+      background-color: #d5eaf0;
+    }
+
+    #buttonClear{
+      background-color: lightcoral;
+      color: darkslategrey;
+    }
+
+    #buttonClear:hover{
+      background-color: #f0c1c1;
+    }
+
+    #result{
+      background-color: lightcyan;
+      color: #212121;
+    }
+    #result:focus-visible{
+      outline-color: darkcyan;
+      outline-style: solid;
+    }
+
+      @media screen and (max-width: 500px) {
+        #button, #buttonClear, #result{
+          border-radius: 2.25rem;
+          margin: 1vw;
+          padding: 8vw;
+          font-size: 5vw;
+        }
+        #result:focus-visible{
+          outline-width: 0.4vw;
+        }
+
+      }
+
+      @media screen and (min-width: 500px) {
+        #button, #buttonClear, #result{
+          border-radius: 0.5rem;
+          margin: 0.25vw;
+          padding: 2vw;
+          font-size: 2vw;
+        }
+        #result:focus-visible{
+          outline-width: 0.1vw;
+        }
+      }
+
+  		.table{
+        display: table;
+      }
+
+      .td{
+        display: inline-flex;
+        width: 25%;
+      }
+
+      .tdResult{
+        display: inline-flex;
+        width: 75%;
+      }
+
+      .tr{
+        display: table-row;
+      }
+  	</style>
+  </head>
+  <body>
+  	<div class="table">
+  		<div class="tr">
+  			<div class="tdResult"><input type="text" id="result" onkeydown="checkIfEnterKeyIsPressed(event)"/></div>
+  			<div class="td"><input id="buttonClear" type="button" value="AC" onclick="clearValue()"/> </div>
+  		</div>
+  		<div class="tr">
+  			<div class="td"><input id="button" type="button" value="1" onclick="addValue('1')"/> </div>
+  			<div class="td"><input id="button" type="button" value="2" onclick="addValue('2')"/> </div>
+  			<div class="td"><input id="button" type="button" value="3" onclick="addValue('3')"/> </div>
+  			<div class="td"><input id="button" type="button" value="/" onclick="addValue('/')"/> </div>
+  		</div>
+  		<div class="tr">
+  			<div class="td"><input id="button" type="button" value="4" onclick="addValue('4')"/> </div>
+  			<div class="td"><input id="button" type="button" value="5" onclick="addValue('5')"/> </div>
+  			<div class="td"><input id="button" type="button" value="6" onclick="addValue('6')"/> </div>
+  			<div class="td"><input id="button" type="button" value="-" onclick="addValue('-')"/> </div>
+  		</div>
+  		<div class="tr">
+  			<div class="td"><input id="button" type="button" value="7" onclick="addValue('7')"/> </div>
+  			<div class="td"><input id="button" type="button" value="8" onclick="addValue('8')"/> </div>
+  			<div class="td"><input id="button" type="button" value="9" onclick="addValue('9')"/> </div>
+  			<div class="td"><input id="button" type="button" value="+" onclick="addValue('+')"/> </div>
+  		</div>
+  		<div class="tr">
+  			<div class="td"><input id="button" type="button" value="." onclick="addValue('.')"/> </div>
+  			<div class="td"><input id="button" type="button" value="0" onclick="addValue('0')"/> </div>
+
+  			<div class="td"><input id="button" type="button" value="=" onclick="solve()"/> </div>
+  			<div class="td"><input id="button" type="button" value="" onclick="addValue('')"/> </div>
+  		</div>
+  	</div>
+  </body>
+</html>
